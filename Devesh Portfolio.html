@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devesh L | PLC Engineer & Automation Specialist</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  overflow-x: hidden;
+}
+
+/* ANIMATED BACKGROUND */
+.bg-animation {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-animation::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-50px, -50px); }
+}
+
+/* HEADER */
+header {
+  position: relative;
+  text-align: center;
+  padding: 120px 20px 100px;
+  background: linear-gradient(135deg, #0ea5e9 0%, #9333ea 100%);
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" x="50" y="50" fill="white" opacity="0.3"/></svg>');
+  opacity: 0.1;
+  animation: sparkle 3s linear infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+}
+
+header h1 {
+  font-size: 64px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -1px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeInDown 0.8s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.subtitle {
+  font-size: 22px;
+  margin-top: 15px;
+  font-weight: 300;
+  opacity: 0.95;
+  animation: fadeInUp 0.8s ease 0.2s backwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 25px;
+  animation: fadeInUp 0.8s ease 0.4s backwards;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+/* BUTTONS */
+.btn-group {
+  margin-top: 40px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  animation: fadeInUp 0.8s ease 0.6s backwards;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: white;
+  color: #0ea5e9;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(255, 255, 255, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+}
+
+/* SECTION */
+section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: auto;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* SECTION HEADERS */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+h2 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #38bdf8, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #94a3b8;
+  font-weight: 300;
+}
+
+/* CARDS */
+.card {
+  background: rgba(30, 41, 59, 0.6);
+  padding: 35px;
+  margin: 20px 0;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #38bdf8, #9333ea);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(56, 189, 248, 0.2);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.card h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #38bdf8, #9333ea);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.card p {
+  line-height: 1.8;
+  color: #cbd5e1;
+  font-size: 16px;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card ul li {
+  padding: 12px 0;
+  padding-left: 30px;
+  position: relative;
+  color: #cbd5e1;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.card ul li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #38bdf8;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* PROJECTS GRID */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.project-card {
+  background: rgba(30, 41, 59, 0.6);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #38bdf8, #9333ea);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover::before {
+  transform: scaleX(1);
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(56, 189, 248, 0.25);
+  border-color: rgba(56, 189, 248, 0.6);
+}
+
+.project-number {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #38bdf8, #9333ea);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  opacity: 0.3;
+}
+
+.project-card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #38bdf8;
+}
+
+.project-card p {
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+/* SKILLS SECTION */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.skill-category {
+  background: rgba(30, 41, 59, 0.6);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.skill-category h3 {
+  color: #38bdf8;
+  margin-bottom: 20px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skill-category ul {
+  list-style: none;
+}
+
+.skill-category li {
+  padding: 10px 0;
+  color: #cbd5e1;
+  padding-left: 25px;
+  position: relative;
+}
+
+.skill-category li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #38bdf8;
+  font-weight: bold;
+}
+
+/* CONTACT SECTION */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.contact-item {
+  background: rgba(30, 41, 59, 0.6);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.6);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+}
+
+.contact-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #38bdf8, #9333ea);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 20px;
+}
+
+.contact-item h3 {
+  color: #38bdf8;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.contact-item p {
+  color: #cbd5e1;
+  word-break: break-all;
+}
+
+.contact-item a {
+  color: #38bdf8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #9333ea;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+footer p {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* SCROLL ANIMATIONS */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.scroll-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 42px;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+  }
+  
+  h2 {
+    font-size: 32px;
+  }
+  
+  .btn-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-animation"></div>
+
+<header>
+  <div class="header-content">
+    <h1>DEVESH L</h1>
+    <p class="subtitle">⚡ Control Engineer | PLC Programmer | Automation Specialist</p>
+    
+    <div class="tech-tags">
+      <span class="tag">PLC Programming</span>
+      <span class="tag">HMI Development</span>
+      <span class="tag">Industrial Automation</span>
+      <span class="tag">Panel Design</span>
+    </div>
+    
+    <div class="btn-group">
+      <a href="#contact" class="btn btn-primary">
+        <span>📧</span>
+        <span>Get in Touch</span>
+      </a>
+      <a href="#" class="btn btn-secondary">
+        <span>📄</span>
+        <span>Download Resume</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="section-header">
+    <h2>About Me</h2>
+    <p class="section-subtitle">Passionate about building intelligent automation systems</p>
+  </div>
+  
+  <div class="card scroll-reveal">
+    <div class="card-icon">👨‍💻</div>
+    <p>
+      Control Engineer with hands-on experience in PLC programming, HMI development, 
+      and industrial automation. Skilled in commissioning, troubleshooting, and building 
+      efficient automation systems. Proficient in designing control panels, implementing 
+      safety systems, and integrating advanced robotics with seamless machine interlocking.
+    </p>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-header">
+    <h2>Professional Experience</h2>
+    <p class="section-subtitle">Building automation solutions since 2024</p>
+  </div>
+  
+  <div class="card scroll-reveal">
+    <h3>
+      <div class="card-icon">🏭</div>
+      ADNA Automation
+    </h3>
+    <p style="color: #94a3b8; margin-bottom: 20px;">2024 – Present</p>
+    <ul>
+      <li>PLC Programming & HMI Development for industrial machinery</li>
+      <li>Machine Commissioning, Troubleshooting & Performance Optimization</li>
+      <li>Panel Design, Wiring & Electrical Integration</li>
+      <li>Worked with Delta, Mitsubishi, Inovance PLCs</li>
+      <li>Implemented safety systems and interlock logic</li>
+      <li>Robot-PLC integration and motion control programming</li>
+    </ul>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-header">
+    <h2>Featured Projects</h2>
+    <p class="section-subtitle">Real-world automation solutions delivered</p>
+  </div>
+
+  <div class="projects-grid">
+    <div class="project-card scroll-reveal">
+      <div class="project-number">01</div>
+      <h3>🔧 Motor Assembly Line</h3>
+      <p>
+        Automated motor assembly system using advanced PLC logic with comprehensive 
+        interlocking mechanisms. Improved production efficiency by 40% with zero 
+        safety incidents.
+      </p>
+    </div>
+
+    <div class="project-card scroll-reveal">
+      <div class="project-number">02</div>
+      <h3>⚙️ Servo Press (EV Drum Brake)</h3>
+      <p>
+        High-precision servo press control system with sensor integration, alarm 
+        management, and multi-layer safety protocols for electric vehicle brake 
+        manufacturing.
+      </p>
+    </div>
+
+    <div class="project-card scroll-reveal">
+      <div class="project-number">03</div>
+      <h3>🤖 Robot Integration</h3>
+      <p>
+        Seamless robot-PLC communication system with machine interlocking, enabling 
+        coordinated operations between industrial robots and automated machinery.
+      </p>
+    </div>
+
+    <div class="project-card scroll-reveal">
+      <div class="project-number">04</div>
+      <h3>🎯 7-Axis CNC Autoloader</h3>
+      <p>
+        Complex motion sequencing system with advanced CNC integration, featuring 
+        multi-axis coordination and automated loading/unloading operations.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-header">
+    <h2>Technical Skills</h2>
+    <p class="section-subtitle">Tools and technologies I work with</p>
+  </div>
+
+  <div class="skills-container">
+    <div class="skill-category scroll-reveal">
+      <h3>🔌 PLC Systems</h3>
+      <ul>
+        <li>Delta PLC</li>
+        <li>Mitsubishi PLC</li>
+        <li>Inovance PLC</li>
+        <li>Ladder Logic</li>
+        <li>Function Blocks</li>
+      </ul>
+    </div>
+
+    <div class="skill-category scroll-reveal">
+      <h3>🖥️ HMI & SCADA</h3>
+      <ul>
+        <li>HMI Development</li>
+        <li>Touch Screen Design</li>
+        <li>Data Visualization</li>
+        <li>Alarm Management</li>
+        <li>User Interface Design</li>
+      </ul>
+    </div>
+
+    <div class="skill-category scroll-reveal">
+      <h3>⚡ Automation</h3>
+      <ul>
+        <li>Motion Control</li>
+        <li>Servo Systems</li>
+        <li>Sensor Integration</li>
+        <li>Safety Systems</li>
+        <li>Robot Integration</li>
+      </ul>
+    </div>
+
+    <div class="skill-category scroll-reveal">
+      <h3>🔧 Engineering</h3>
+      <ul>
+        <li>Panel Design</li>
+        <li>Electrical Wiring</li>
+        <li>Commissioning</li>
+        <li>Troubleshooting</li>
+        <li>Documentation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-header">
+    <h2>Let's Connect</h2>
+    <p class="section-subtitle">Interested in working together? Reach out!</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-item scroll-reveal">
+      <div class="contact-icon">📱</div>
+      <h3>Phone</h3>
+      <p><a href="tel:+916369795319">+91 6369795319</a></p>
+    </div>
+
+    <div class="contact-item scroll-reveal">
+      <div class="contact-icon">📧</div>
+      <h3>Email</h3>
+      <p><a href="mailto:devesh8050@gmail.com">devesh8050@gmail.com</a></p>
+    </div>
+
+    <div class="contact-item scroll-reveal">
+      <div class="contact-icon">🔗</div>
+      <h3>LinkedIn</h3>
+      <p><a href="https://linkedin.com/in/devesh-l-392503224" target="_blank">Connect on LinkedIn</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Devesh L | Automation Portfolio | Crafted with precision ⚡</p>
+</footer>
+
+<script>
+// Scroll reveal animation
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.scroll-reveal').forEach(el => {
+  observer.observe(el);
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
